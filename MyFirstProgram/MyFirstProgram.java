@@ -32,7 +32,7 @@ public class MyFirstProgram { //mendefinisikan kelas utama dalam program karena 
         String blue = "\u001B[34m"; //untuk mewarnai string dengan warna biru
         String green = "\u001B[32m"; //untuk mewarnai string dengan warna hijau
         String reset = "\u001B[0m"; //untuk menyetel ulang wanra string agar tidak lanjut mewarnai string berikutnya
-        String color = ""; //untuk menetapkan string untuk color
+        String color; //untuk menetapkan color sebagai variabel string
 
         Scanner scanner = new Scanner(System.in); //untuk membuat objek scanner untuk membaca input dari user
         Random rand = new Random(); //membuat objek random untuk bisa menggunakan fungsi random
@@ -61,22 +61,30 @@ public class MyFirstProgram { //mendefinisikan kelas utama dalam program karena 
                 "\nMyself... I study Pokémon as a profession. First what's your name?"); //untuk mencetak string greeting bagiaan pertama
         System.out.print(red + "Enter Your Name: " + reset); //untuk mencetak kalimat "Enter Your Name: " dalam terminal dengan warna merah
         String name = scanner.nextLine(); //untuk membuat user menginput namanya
-        System.out.print("Right! So yourp name is " + name + ". Welcome to the region of java, now before you start your journey." +
-                " I would like you to choose your starter pokemon\n" + green + "1. rowlet\n" + red + "2. Torchic\n" + blue + "3. Piplup\n" + reset + "Choose your starter: "); //untuk mencetak string greeting bagian kedua
-        int n = scanner.nextInt(); //untuk user bisa menginput jawaban mereka
-        switch (n) {
-            case 1:
-                color = "\u001B[32m"; //untuk mengisi string color dengan kode warna hijau kalau user memilih 1
-                break;
-            case 2:
-                color = "\u001B[31m"; //untuk mengisi string color dengan kode warna merah kalau user memilih 2
-                break;
-            case 3:
-                color = "\u001B[34m"; //untuk mengisi string color dengan kode warna biru kalau user memilih 3
-                break;
-            default:
-                System.out.println("Invalid Option"); //kalau jawaban user bukan 1,2 dan 3 maka akan dikasih tau invalid option
-        } //untuk mengubah isi string color untuk warna string berikutnya berdasarkan pilihan user
+        System.out.println("Right! So yourp name is " + name + ". Welcome to the region of java, now before you start your journey." +
+                " I would like you to choose your starter pokemon\n" + green + "1. rowlet\n" + red + "2. Torchic\n" + blue + "3. Piplup" + reset); //untuk mencetak string greeting bagian kedua
+        while (true) {
+            System.out.print("Choose your starter: "); //untuk mencetak string pertanyaan
+            String n = scanner.nextLine().toLowerCase(); //untuk user bisa menginput jawaban mereka
+            switch (n) {
+                case "rowlet":
+                case "1":
+                    color = "\u001B[32m"; //untuk mengisi string color dengan kode warna hijau kalau user memilih 1
+                    break;
+                case "torchic":
+                case "2":
+                    color = "\u001B[31m"; //untuk mengisi string color dengan kode warna merah kalau user memilih 2
+                    break;
+                case "piplup":
+                case "3":
+                    color = "\u001B[34m"; //untuk mengisi string color dengan kode warna biru kalau user memilih 3
+                    break;
+                default:
+                    System.out.println("Invalid Option"); //kalau jawaban user bukan 1,2 dan 3 maka akan dikasih tau invalid option
+                    continue;
+            } //untuk mengubah isi string color untuk warna string berikutnya berdasarkan pilihan user
+            break;
+        } //bagian pertanyaan akan terus mengulang kalo dijawab dengan cara yang salah contoh 4
         System.out.println(color + fact + reset); //untuk mencetak fun fact tentang java yang tadi dipilih secara random dengan warna yang terpilih dari switch case
         String version = System.getProperty("java.version"); //untuk mengambil versi java yang ada di komputer user
         System.out.print(cyan + "The current java version: " + version); ///untuk mencetak "The current java version: " bersama versi java yang didapat tadi dari komputer user
